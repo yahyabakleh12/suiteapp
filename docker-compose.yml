@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./Docker/
+      dockerfile: Dockerfile
+    networks:
+      - app
+    environment:
+      - APP_ENV=${APP_ENV}
+      - CONTAINER_ROLE=app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    ports:
+      - "${FORWARD_BACKEND_PORT:-8000}:8000"
+    depends_on:
+      - database
+
+  database:
+    networks:
+      - app
+    image: 'mysql:8.0'
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    environment:
+    #TODO: Set a different root password
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - 'db-data:/var/lib/mysql'
+      - ./database/dump:/docker-entrypoint-initdb.d
+    restart: always
+    container_name: '${DB_HOST}'
+
+networks:
+  app:
+    driver: bridge
+volumes:
+    db-data: ~
