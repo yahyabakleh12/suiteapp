@@ -88,6 +88,11 @@ Route::prefix('admin')->group(function () {
 
 ///////////////////////////////////////////////////////////  User  ////////////////////////////////////////////////////////////
 Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+// Route::get('/HelpSupport', [App\Http\Controllers\HomeController::class, 'HelpSupport']);
+// Route::get('/TermsCondition', [App\Http\Controllers\HomeController::class, 'TermsCondition']);
+// Route::get('/PrivacyPolicy', [App\Http\Controllers\HomeController::class, 'PrivacyPolicy']);
+
+
 // Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index']);
 // Auth::routes();
 Route::get('/login', [AuthController::class, 'login_post'])->name('login_post');
