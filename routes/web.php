@@ -73,7 +73,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/area', areaController::class);
         Route::resource('/time-slote', timesloteController::class);
         Route::resource('/visitor-area', visitorController::class);
-        Route::get('/', [App\Http\Controllers\admin\HomeController::class, 'root'])->name('root');
+        Route::get('/', [App\Http\Controllers\admin\HomeController::class, 'root'])->name('root.admin');
         Route::get('{any}', [App\Http\Controllers\admin\HomeController::class, 'index'])->name('index');
         Route::get('/dashboard', [HomeController::class, 'index']);
         // Route::post('/subServices-add', [subServicesController::class, 'add_subservice'])->name('subServices.store.show');
@@ -87,7 +87,7 @@ Route::prefix('admin')->group(function () {
 
 
 ///////////////////////////////////////////////////////////  User  ////////////////////////////////////////////////////////////
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('root');
 // Route::get('/{any}', [App\Http\Controllers\HomeController::class, 'index']);
 // Auth::routes();
 Route::get('/login', [AuthController::class, 'login_post'])->name('login_post');
