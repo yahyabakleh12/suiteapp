@@ -100,8 +100,8 @@ Route::group(['middleware' => 'user'], function () {
     //     return response()->json([ 'status' => 'OK']);
     // });
 });
-Route::post('/401', [AuthController::class, 'unauthrized'])->name('unauthrized');
-Route::get('/401', [AuthController::class, 'unauthrized'])->name('unauthrized');
+Route::post('/401', [AuthController::class, 'unauthrized'])->name('unauthrized.post');
+Route::get('/401', [AuthController::class, 'unauthrized'])->name('unauthrized.get');
 ///////////////////////////////////////////////////////////////  building  ///////////////////////////////////////////////////////////////
 Route::get('/guest_qr_code/{id1}/{id2}',[FacilitiesController::class,'guest_access']);
 Route::get('/guest_qr_code/{id1}/{id2}/{special}',[FacilitiesController::class,'guest_access2']);
