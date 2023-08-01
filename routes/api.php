@@ -38,8 +38,8 @@ Route::post('/verify-two-steps', [AuthController::class, 'two_factory_auth']);
 Route::post('/forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::post('/reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::post('/verify-pin', [ForgotPasswordController::class, 'verifypin']);
-Route::get('/unauthanticated', [AuthController::class, 'unauthanticated'])->name('unauthanticated');
-Route::post('/unauthanticated', [AuthController::class, 'unauthanticated'])->name('unauthanticated');
+Route::get('/unauthanticated', [AuthController::class, 'unauthanticated'])->name('unauthanticated.get');
+Route::post('/unauthanticated', [AuthController::class, 'unauthanticated'])->name('unauthanticated.post');
 Route::post('/store_face',[AuthController::class, 'register_face']);
 Route::get('/service-picture/{id}', [servicesController::class, 'get_image']);
 

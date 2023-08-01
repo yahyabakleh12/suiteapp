@@ -18,7 +18,7 @@ class RedirectIfNotstaff extends Middleware
     protected function redirectTo($request)
     {
         if (!$request->expectsJson()) {
-            return route('unauthanticated');
+            return route('unauthanticated.get');
         }
     }
 }
