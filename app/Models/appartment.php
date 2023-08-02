@@ -14,7 +14,9 @@ class appartment extends Model
         'number',
         'building_id',
         'number_of_people',
-        'own'
+        'own',
+        'start_contract',
+        'end_contract'
     ];
     public function building()
     {

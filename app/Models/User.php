@@ -37,7 +37,8 @@ class User extends Authenticatable
         'face',
         'rate',
         'nfc',
-        'sync'
+        'sync',
+        'perant_id'
     ];
 
     /**
@@ -61,6 +62,10 @@ class User extends Authenticatable
     public function building()
     {
         return $this->belongsTo(building::class, 'building_id');
+    }
+    public function appartment()
+    {
+        return $this->belongsTo(appartment::class, 'appartment_number');
     }
     public function plan()
     {

@@ -204,7 +204,7 @@ class AuthController extends Controller
     }
     public function register(Request $request)
     {
-        return $request;
+      
         $rules = [
             'name' => 'required|max:191',
             'phone' => 'required|max:10|unique:users',
@@ -260,7 +260,19 @@ class AuthController extends Controller
                 'building_id' => $request->building_id,
 
             ]);
-
+            foreach($request->Family_member as $item){
+                User::create([
+                    'name' => $item->name,
+                    'phone' => $item->phone,
+                    'appartment_number' => $request->appartment_number,
+                    'email' => $item->email,
+                    'password' => Hash::make($item->password),
+                    'two_step' => $two_step,
+                    'agree' => $agree,
+                    'building_id' => $request->building_id,
+                    'perant_id'=>$createUser->id
+                ]);
+            }
 
             $token = Str::random(64);
 
